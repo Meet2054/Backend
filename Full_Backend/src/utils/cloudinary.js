@@ -27,7 +27,7 @@ import {fs } from 'fs';
     };
 
     // Upload an image
-    cloudinary.uploader.upload("https://res.cloudinary.com/demo/image/upload/getting-started/shoes.jpg", {
+    cloudinary.uploader.upload("https://res.cloudinary.com/demo/image//getting-started/shoes.jpg", {
         public_id: "shoes"
     }).catch((error)=>{console.log(error)});
     

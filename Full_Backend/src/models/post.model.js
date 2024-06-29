@@ -2,14 +2,10 @@ import mongoose , { Schema , Model} from "mongoose";
 import { User } from "./user.model.js";
 import mongooseAggergatePaginate from "mongoose-aggregate-paginate-v2";
 
-const videoSchema = new Schema({
-    videoFile: {
+const   postSchema = new Schema({
+    imageFile: {
         type: String,
         required: true, 
-    },
-    thumbnail: {
-        type :String,
-        required : true
     },
     owner : { 
         type: Schema.Types.ObjectId,
@@ -18,15 +14,10 @@ const videoSchema = new Schema({
     title : {
         type : String,
         required : true
-    },
+    },  
     description : {
         type :String,
         required : true
-    },
-    duration : {
-        type : Number,
-        required : true,
-
     },
     views : {
         type : Number,
@@ -44,6 +35,6 @@ const videoSchema = new Schema({
 
 },{timestamps : true})
  
-videoSchema.plugin(mongooseAggergatePaginate);
+postSchema.plugin(mongooseAggergatePaginate);
 
-export const Video = Model("Video" , videoSchema) 
+export const Post = Model("Post" , postSchema) 

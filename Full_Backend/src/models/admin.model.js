@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt"; 
 
 
-const userSchema = new Schema({
+const AdminSchema = new Schema({
     username : {
         type : String,
         required : true,
@@ -42,12 +42,7 @@ const userSchema = new Schema({
          
     },
     refreshToken : {type : String},
-    watchHistory : [
-        {
-        type : Schema.Types.ObjectId,
-        ref : 'Video'
-        }
-     ]
+    
 },{timestamps : true})
 
 //Hashing the password before saving in the user schema  
@@ -63,7 +58,7 @@ userSchema.methods.isPasswordCorrect = async function (password){
     return await bcrypt.compare(password,this.password);
 } 
 
-userSchema.methods.genrateAccessToken = function(){
+AdminSchema.methods.genrateAccessToken = function(){
     return jwt.sign(
         {
             _id : this._id,
@@ -79,7 +74,7 @@ userSchema.methods.genrateAccessToken = function(){
     )
 };
 
-userSchema.methods.genrateRefreshToken = function(){
+AdminSchema.methods.genrateRefreshToken = function(){
     return jwt.sign(
         {
             _id : this._id, 
@@ -93,4 +88,4 @@ userSchema.methods.genrateRefreshToken = function(){
 }
 
 
-export const  User = mongoose.model("User",userSchema);
+export const  Admin = mongoose.model("Admin",AdminSchema);

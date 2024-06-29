@@ -1,6 +1,5 @@
 import multer from 'multer';
 
-
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, '/tmp/my-uploads')
@@ -12,4 +11,7 @@ const storage = multer.diskStorage({
   
   const upload = multer({ storage: storage })
 
-  export default upload 
+  export default upload  
+
+
+  
